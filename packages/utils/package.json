@@ -1,0 +1,28 @@
+{
+  "name": "@vue-pro-components/utils",
+  "version": "0.0.0",
+  "description": "utils",
+  "keywords": [
+    "utils"
+  ],
+  "author": "Tusi <cumtrobin@163.com>",
+  "homepage": "https://github.com/cumt-robin/vue-pro-components#readme",
+  "license": "MIT",
+  "main": "index.ts",
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cumt-robin/vue-pro-components.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/@vue-pro-components/utils.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/cumt-robin/vue-pro-components/issues"
+  }
+}
