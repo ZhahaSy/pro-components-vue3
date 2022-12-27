@@ -33,6 +33,10 @@ interface Props {
      * a-form组件中的表格 props
      */
     filterProps?: FormProps
+    /**
+     * 是否可以控制 列的显隐
+     */
+    isSelectableColumn?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -87,6 +91,7 @@ defineExpose({
         :mutiple="mutiple"
         :columns="columns"
         :is-show-pagination="isShowPagination"
+        :is-selectable-column="true"
     >
         <template #header="header">
             <slot name="tableHeader" v-bind="header"></slot>

@@ -31,7 +31,8 @@ const getData = async (params: any) => {
 };
 </script>
 <template>
-  <Crud :form-state="formState" :columns="columns" :is-show-pagination="true" tableProps='{}' :request="getData">
+  <Crud :form-state="formState" :columns="columns" :is-show-pagination="true" 
+  :tableProps='{}' :request="getData" :isSelectableColumn='true'>
     <template #filter="{ expand }">
       <a-row :gutter="24">
         <a-col :span="8">

@@ -1,137 +1,41 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import { IconFont, IconSvg, Button as VpButton, SelectIcon, Crud } from 'vue-pro-components'
-import 'vue-pro-components/src/icon-svg/style/index.less'
-import 'vue-pro-components/src/button/style/index.less'
-import 'vue-pro-components/src/select-icon/style/index.less'
-import { ref } from 'vue'
-import icons from './assets/json/icons.json'
-import testCrud from "./views/test-crud.vue";
-
-const isSelectIconVisible = ref(false)
-const selectedIcon = ref('')
-const onSelectIcon = (value: string) => {
-    selectedIcon.value = value
-    isSelectIconVisible.value = false
-}
+import testCrud from './views/test-crud.vue';
 </script>
 
-<!-- <template>
-    <div>
-        <a href="https://vitejs.dev" target="_blank">
-            <img src="/vite.svg" class="logo" alt="Vite logo" />
-        </a>
-        <a href="https://vuejs.org/" target="_blank">
-            <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-        </a>
-    </div>
-
-    <IconFont icon="lock" :size="20"></IconFont>
-    <br />
-    <IconFont icon="map" color="#3ebbff"></IconFont>
-    <br />
-    <div style="display: flex; align-items: center">
-        <span>测试文本</span>
-        <IconSvg icon="lock"></IconSvg>
-    </div>
-
-    <ul class="btn-test-ul">
-        <li>
-            <span>VpButton 通过 ico 属性使用 icon-svg 的图标</span>
-            <VpButton ico="smile">笑脸</VpButton>
-        </li>
-        <li>
-            <span>VpButton 通过 ico 属性使用 icon-svg 的图标，按钮 size 为 large</span>
-            <VpButton ico="smile" size="large">笑脸</VpButton>
-        </li>
-        <li>
-            <span>VpButton 通过 ico 属性使用 icon-svg 的图标，按钮 size 为 small，属性 loading 为 true</span>
-            <VpButton ico="smile" size="small" loading>笑脸</VpButton>
-        </li>
-        <li>
-            <span>VpButton 通过 ico 属性使用 icon-svg 的图标，按钮 size 为 small，属性 disabled 为 true</span>
-            <VpButton ico="smile" size="small" disabled>笑脸</VpButton>
-        </li>
-        <li>
-            <span>VpButton 通过 icon 插槽使用 @ant-design/icons-vue 的图标</span>
-            <VpButton type="primary">
-                <template #icon>
-                    <PlusOutlined />
-                </template>
-                新建
-            </VpButton>
-        </li>
-        <li>
-            <span>VpButton 通过 icon 插槽使用 @ant-design/icons-vue 的图标，按钮 size 为 small</span>
-            <VpButton type="primary" size="small">
-                <template #icon>
-                    <PlusOutlined />
-                </template>
-                新建
-            </VpButton>
-        </li>
-        <li>
-            <span>VpButton 通过 icon 插槽使用 @ant-design/icons-vue 的图标，按钮 size 为 small，属性 loading 为 true</span>
-            <VpButton type="primary" size="small" loading>
-                <template #icon>
-                    <PlusOutlined />
-                </template>
-                新建
-            </VpButton>
-        </li>
-        <li>
-            <span>AButton 通过 icon 插槽使用 @ant-design/icons-vue 的图标</span>
-            <a-button>
-                <template #icon>
-                    <PlusOutlined />
-                </template>
-                新建AButton
-            </a-button>
-        </li>
-        <li>
-            <span style="vertical-align: middle">菜单图标</span>
-            <a-input-search
-                style="width: 200px; vertical-align: middle"
-                v-model:value="selectedIcon"
-                @search="isSelectIconVisible = true"
-            ></a-input-search>
-        </li>
-    </ul>
-
-    <a-modal :visible="isSelectIconVisible" :footer="null" @cancel="isSelectIconVisible = false">
-        <select-icon :icons="icons" :value="selectedIcon" @select="onSelectIcon" />
-    </a-modal>
-</template> -->
-
 <template>
-<testCrud></testCrud>
+  <div class="app-wrap">
+    <testCrud></testCrud>
+  </div>
 </template>
 
 <style lang="less" scoped>
 .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
 }
 
 .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #646cffaa);
 }
 
 .logo.vue:hover {
-    filter: drop-shadow(0 0 2em #42b883aa);
+  filter: drop-shadow(0 0 2em #42b883aa);
 }
 
 .btn-test-ul {
-    text-align: left;
-    > li {
-        + li {
-            margin-top: 10px;
-        }
-        > span {
-            margin-right: 10px;
-        }
+  text-align: left;
+
+  > li {
+    + li {
+      margin-top: 10px;
     }
+
+    > span {
+      margin-right: 10px;
+    }
+  }
 }
 </style>

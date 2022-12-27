@@ -40,5 +40,9 @@
     "npm": "We recommend installing dependencies with yarn",
     "yarn": ">=1.22.0 < 2.0.0",
     "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "@vue/eslint-config-typescript": "^11.0.2"
   }
 }

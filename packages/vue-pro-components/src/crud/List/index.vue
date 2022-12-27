@@ -20,7 +20,7 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const selectedRowKeys = ref<number[]>([]) // Check here to configure the default column
+const selectedRowKeys = ref<unknown[]>([]) // Check here to configure the default column
 
 const onSelectChange = (changableRowKeys: number[]) => {
     selectedRowKeys.value = changableRowKeys
