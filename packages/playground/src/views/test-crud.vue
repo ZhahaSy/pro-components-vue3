@@ -1,9 +1,8 @@
 <script lang="ts" setup>
-import { Crud } from 'vue-pro-components'
+import { Crud } from 'vue-pro-components';
 import { reactive } from 'vue';
 import { columns } from './config';
 // import AmortizationConfirm from './amortizationConfirm.vue';
-
 
 const formState = reactive<Record<string, string>>({
   year: '',
@@ -16,10 +15,10 @@ const formState = reactive<Record<string, string>>({
 const getData = async (params: any) => {
   return {
     tableData: [
-        {
-            a: 1,
-            b: 2,
-        }
+      {
+        a: 1,
+        b: 2,
+      },
     ],
     page: {
       // total: res.total,
@@ -31,8 +30,14 @@ const getData = async (params: any) => {
 };
 </script>
 <template>
-  <Crud :form-state="formState" :columns="columns" :is-show-pagination="true" 
-  :tableProps='{}' :request="getData" :isSelectableColumn='true'>
+  <Crud
+    :form-state="formState"
+    :columns="columns"
+    :is-show-pagination="true"
+    :table-props="{}"
+    :request="getData"
+    :is-selectable-column="true"
+  >
     <template #filter="{ expand }">
       <a-row :gutter="24">
         <a-col :span="8">
@@ -48,11 +53,7 @@ const getData = async (params: any) => {
         </a-col>
         <a-col :span="8">
           <a-form-item :name="`businessLineCode`" :label="`业务线`">
-            <a-select
-              v-model:value="formState.businessLineCode"
-              :options="[]"
-              placeholder="请选择"
-            />
+            <a-select v-model:value="formState.businessLineCode" :options="[]" placeholder="请选择" />
           </a-form-item>
         </a-col>
         <a-col :span="8">
@@ -67,11 +68,7 @@ const getData = async (params: any) => {
         </a-col>
         <a-col v-show="expand" :span="8">
           <a-form-item :name="`projectType`" :label="`摊销月份`">
-            <a-select
-              v-model:value="formState.amortizationMonth"
-              :options="[]"
-              placeholder="请选择"
-            />
+            <a-select v-model:value="formState.amortizationMonth" :options="[]" placeholder="请选择" />
           </a-form-item>
         </a-col>
       </a-row>
@@ -82,8 +79,7 @@ const getData = async (params: any) => {
     <template #tableHeader>
       <!-- <AmortizationConfirm></AmortizationConfirm> -->
     </template>
-    <template #tableBodyCell="{ column, record }">
-    </template>
+    <template #tableBodyCell="{ column, record }"> </template>
   </Crud>
 </template>
 
