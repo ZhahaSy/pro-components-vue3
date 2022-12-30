@@ -1,78 +1,75 @@
-import { TableColumnProps } from 'ant-design-vue';
-import { any } from 'vue-types';
+// import { TableColumnProps } from 'ant-design-vue';
+// import { any } from 'vue-types';
 // @TODO 组件 类型定义 导出
 // import type { Filter } from '@/components/Crud/type';
 // @TODO 组件 类型定义 导出
 // eslint-disable-next-line import/no-unresolved
 // import { FilterType } from '@/components/Crud/type';
 
-
-export const columns: TableColumnProps[] = [
+export const columns: any = [
   {
-    title: '流水主键ID',
+    title: 'ID',
+    key: 'id',
     dataIndex: 'id',
     width: 80,
+    suppressible: false,
+    fixed: 'left',
   },
   {
     title: '业务线',
+    key: 'businessLineCode',
     dataIndex: 'businessLineCode',
     width: 100,
+    suppressible: true,
   },
   {
     title: '项目名称',
+    key: 'projectName',
     dataIndex: 'projectName',
     width: 100,
+    suppressible: true,
   },
-  {
-    title: '业务系统项目编码',
-    dataIndex: 'projectCode',
-    width: 100,
-  },
-  {
-    title: '金蝶项目类别',
-    dataIndex: 'easType',
-    width: 100,
-  },
-  {
-    title: '金蝶项目代码',
-    dataIndex: 'easCode',
-    width: 100,
-  },
-  {
-    title: '金蝶项目名称',
-    dataIndex: 'easName',
-    width: 100,
-  },
-  // @TODO 字段
   {
     title: '装扮类型',
-    dataIndex: 'businessLineTypeCode',
+    key: 'businessLineType',
+    dataIndex: 'businessLineType',
     width: 100,
+    suppressible: true,
   },
   {
     title: '项目类型',
+    key: 'projectType',
     dataIndex: 'projectType',
     width: 100,
+    suppressible: true,
   },
   {
-    title: '支付月份',
-    dataIndex: 'payMonth',
+    title: '支付年度',
+    key: 'accountancyYear',
+    dataIndex: 'accountancyYear',
     width: 100,
+    suppressible: true,
+  },
+  {
+    title: '月份',
+    key: 'month',
+    dataIndex: 'month',
+    width: 100,
+    suppressible: true,
   },
   {
     title: '支付额度',
+    key: 'payQuota',
     dataIndex: 'payQuota',
     width: 100,
+    suppressible: true,
   },
   {
     title: '摊销月份',
+    key: 'amortizationMonth',
     dataIndex: 'amortizationMonth',
     width: 100,
-  },
-  {
-    title: '摊销额度',
-    dataIndex: 'amortizationQuota',
-    width: 100,
+    suppressible: true,
   },
 ];
 

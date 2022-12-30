@@ -9,6 +9,8 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AAlert: typeof import('ant-design-vue/es')['Alert']
     AButton: typeof import('ant-design-vue/es')['Button']
+    ACheckbox: typeof import('ant-design-vue/es')['Checkbox']
+    ACheckboxGroup: typeof import('ant-design-vue/es')['CheckboxGroup']
     ACol: typeof import('ant-design-vue/es')['Col']
     ADatePicker: typeof import('ant-design-vue/es')['DatePicker']
     AForm: typeof import('ant-design-vue/es')['Form']
@@ -16,6 +18,7 @@ declare module '@vue/runtime-core' {
     AInput: typeof import('ant-design-vue/es')['Input']
     AInputSearch: typeof import('ant-design-vue/es')['InputSearch']
     AModal: typeof import('ant-design-vue/es')['Modal']
+    APopover: typeof import('ant-design-vue/es')['Popover']
     App: typeof import('./src/App.vue')['default']
     ARow: typeof import('ant-design-vue/es')['Row']
     ASelect: typeof import('ant-design-vue/es')['Select']

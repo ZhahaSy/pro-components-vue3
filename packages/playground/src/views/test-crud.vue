@@ -6,7 +6,7 @@ import { columns } from './config';
 
 const formState = reactive<Record<string, string>>({
   year: '',
-  payMonth: '',
+  month: '',
   amortizationMonth: '',
   businessLineType: '',
   businessLineCode: '',
@@ -16,8 +16,15 @@ const getData = async (params: any) => {
   return {
     tableData: [
       {
-        a: 1,
-        b: 2,
+        accountancyYear: 2022,
+        amortizationMonth: 8,
+        businessLineCode: '111',
+        businessLineType: '2222',
+        id: 105097,
+        month: 7,
+        payQuota: '283.02',
+        projectName: '阴阳师',
+        projectType: '17',
       },
     ],
     page: {
@@ -36,7 +43,7 @@ const getData = async (params: any) => {
     :is-show-pagination="true"
     :table-props="{}"
     :request="getData"
-    :is-selectable-column="true"
+    :is-select-table-column="true"
   >
     <template #filter="{ expand }">
       <a-row :gutter="24">
@@ -62,8 +69,8 @@ const getData = async (params: any) => {
           </a-form-item>
         </a-col>
         <a-col v-show="expand" :span="8">
-          <a-form-item :name="`projectName`" :label="`支付月份`">
-            <a-input v-model:value="formState.payMonth" placeholder="请输入" />
+          <a-form-item :name="`projectName`" :label="`月份`">
+            <a-input v-model:value="formState.month" placeholder="请输入" />
           </a-form-item>
         </a-col>
         <a-col v-show="expand" :span="8">
@@ -79,7 +86,11 @@ const getData = async (params: any) => {
     <template #tableHeader>
       <!-- <AmortizationConfirm></AmortizationConfirm> -->
     </template>
-    <template #tableBodyCell="{ column, record }"> </template>
+    <template #tableBodyCell="{ column, record }">
+      <template v-if="column.dataIndex">
+        {{ record[column.dataIndex] || '-' }}
+      </template>
+    </template>
   </Crud>
 </template>
 
