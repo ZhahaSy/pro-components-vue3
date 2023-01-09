@@ -44,6 +44,7 @@ const props = withDefaults(defineProps<Props>(), {
   tableProps: undefined,
   filterProps: undefined,
   isOptionalTableColumn: false,
+  isShowPagination: true,
 });
 
 const state = reactive<{

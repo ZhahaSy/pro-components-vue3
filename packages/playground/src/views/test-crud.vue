@@ -40,7 +40,6 @@ const getData = async (params: any) => {
   <Crud
     :form-state="formState"
     :columns="columns"
-    :is-show-pagination="true"
     :table-props="{}"
     :request="getData"
     :is-optional-table-column="true"
