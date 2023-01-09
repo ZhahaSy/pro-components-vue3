@@ -33,7 +33,6 @@
   "scripts": {
     "bootstrap": "lerna bootstrap -- --hoist",
     "playground:dev": "lerna run --scope playground dev",
-    "playground:genIconsList": "lerna run --scope playground genIconsList",
     "publish:package": "lerna publish from-package --yes"
   },
   "engines": {
