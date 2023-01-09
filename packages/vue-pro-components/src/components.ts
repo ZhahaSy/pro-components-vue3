@@ -1,1 +1,1 @@
-export { Crud } from './crud';
+export { Crud } from './Crud';

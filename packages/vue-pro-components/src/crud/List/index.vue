@@ -16,7 +16,7 @@ interface Props {
    * 是否使用默认 的分页器
    */
   isShowPagination: boolean;
-  isSelectTableColumn?: boolean;
+  isOptionalTableColumn?: boolean;
 }
 
 const props = defineProps<Props>();
@@ -90,7 +90,7 @@ const checkColumns = computed(() => {
   <div :class="Classes['table-wrapper']">
     <div v-if="$slots.header" :class="Classes['btn-group']">
       <slot name="header"></slot>
-      <span v-if="isSelectTableColumn" :class="Classes['btn-extra']">
+      <span v-if="isOptionalTableColumn" :class="Classes['btn-extra']">
         <slot name="popover-btn">
           <a-popover trigger="click" placement="bottomRight" :overlay-style="{ minWidth: '160px' }">
             <template #content>

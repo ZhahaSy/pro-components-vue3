@@ -36,14 +36,14 @@ interface Props {
   /**
    * 是否可以控制 列的显隐
    */
-  isSelectTableColumn?: boolean;
+  isOptionalTableColumn?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   mutiple: false,
   tableProps: undefined,
   filterProps: undefined,
-  isSelectTableColumn: false,
+  isOptionalTableColumn: false,
 });
 
 const state = reactive<{
@@ -98,7 +98,7 @@ defineExpose({
     :mutiple="mutiple"
     :columns="columns"
     :is-show-pagination="isShowPagination"
-    :is-select-table-column="isSelectTableColumn"
+    :is-optional-table-column="isOptionalTableColumn"
   >
     <template #header="header">
       <slot name="tableHeader" v-bind="header"></slot>

@@ -43,7 +43,7 @@ const getData = async (params: any) => {
     :is-show-pagination="true"
     :table-props="{}"
     :request="getData"
-    :is-select-table-column="true"
+    :is-optional-table-column="true"
   >
     <template #filter="{ expand }">
       <a-row :gutter="24">
