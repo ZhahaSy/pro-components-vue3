@@ -22,7 +22,6 @@ export default defineComponent({
   setup: (props, { emit, slots }) => {
     const expand = ref(false);
     const formRef = ref<FormInstance>();
-
     // 提交
     const onFinish = (values) => {
       emit('search', values);
@@ -36,10 +35,10 @@ export default defineComponent({
     return () => (
       <div>
         <AForm
-          ref="formRef"
+          ref={formRef}
           name="advanced_search"
           class="advanced-form"
-          v-bind:model={props.formState}
+          model={props.formState}
           {...props.filterProps}
           onFinish={onFinish}
         >
@@ -52,17 +51,18 @@ export default defineComponent({
               <AButton style="margin: 0 8px" onClick={onReset}>
                 重置
               </AButton>
-              <a
-                v-if={props.isShowExpand}
-                style="font-size: 14px"
-                onClick={() => {
-                  console.log(111);
-                  expand.value = !expand.value;
-                }}
-              >
-                {expand.value ? <UpOutlined /> : <DownOutlined />}
-                {!expand.value ? '展开' : '收起'}
-              </a>
+              {props.isShowExpand ? (
+                <a
+                  style="font-size: 14px"
+                  onClick={() => {
+                    console.log(111);
+                    expand.value = !expand.value;
+                  }}
+                >
+                  {expand.value ? <UpOutlined /> : <DownOutlined />}
+                  {!expand.value ? '展开' : '收起'}
+                </a>
+              ) : null}
             </ACol>
           </ARow>
         </AForm>

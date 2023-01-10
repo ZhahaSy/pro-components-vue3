@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { FormProps, TableColumnProps, TableProps } from 'ant-design-vue';
 import { reactive, onMounted, computed } from 'vue';
-import AdvanceForm from './AdvanceForm/index';
-import List from './List/index';
+import AdvanceForm from '../AdvanceForm/index';
+import List from './index';
 
 interface Props {
   /**
@@ -12,7 +12,7 @@ interface Props {
   /**
    * table 是否可以多选
    */
-  mutiple?: boolean;
+  mutiple: boolean;
   /**
    * table 请求
    */
@@ -28,7 +28,7 @@ interface Props {
   /**
    * 是否使用默认 的分页器
    */
-  isShowPagination?: boolean;
+  isShowPagination: boolean;
   /**
    * a-form组件中的表格 props
    */
