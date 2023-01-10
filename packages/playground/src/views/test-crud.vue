@@ -67,12 +67,12 @@ const getData = async (params: any) => {
             <a-select v-model:value="formState.businessLineType" :options="[]" placeholder="请选择" />
           </a-form-item>
         </a-col>
-        <a-col v-show="expand" :span="8">
+        <a-col v-show="expand.value" :span="8">
           <a-form-item :name="`projectName`" :label="`月份`">
             <a-input v-model:value="formState.month" placeholder="请输入" />
           </a-form-item>
         </a-col>
-        <a-col v-show="expand" :span="8">
+        <a-col v-show="expand.value" :span="8">
           <a-form-item :name="`projectType`" :label="`摊销月份`">
             <a-select v-model:value="formState.amortizationMonth" :options="[]" placeholder="请选择" />
           </a-form-item>

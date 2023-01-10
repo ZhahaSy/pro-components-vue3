@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { FormProps, TableColumnProps, TableProps } from 'ant-design-vue';
 import { reactive, onMounted, computed } from 'vue';
-import AdvanceForm from './AdvanceForm/index.vue';
+import AdvanceForm from './AdvanceForm/index';
 import List from './List/index.vue';
 
 interface Props {
