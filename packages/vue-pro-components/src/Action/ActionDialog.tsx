@@ -13,9 +13,10 @@ const Button = defineComponent({
       visible.value = true;
     };
     return () => (
-      <a-button class={['btn', `btn-${props.type}`]} showModal={showModal}>
+      <>
+        <a-button class={['btn', `btn-${props.type}`]} showModal={showModal}></a-button>
         <Modal v-model:visible={visible}></Modal>
-      </a-button>
+      </>
     );
   },
 });
