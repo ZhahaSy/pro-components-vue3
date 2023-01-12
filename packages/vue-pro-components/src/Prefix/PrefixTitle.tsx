@@ -1,5 +1,5 @@
 import { CSSProperties, defineComponent } from 'vue';
-import './style.css';
+import './style.less';
 
 enum SizeTitle {
   Small,

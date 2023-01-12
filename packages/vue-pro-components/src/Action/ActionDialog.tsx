@@ -1,5 +1,5 @@
 import { defineComponent, ref } from 'vue';
-import './style.css';
+import './style.less';
 import Modal from '../Modal/BasicModal';
 
 interface ButtonProps {
