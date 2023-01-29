@@ -18,15 +18,13 @@
 ## 快速启动
 ```
 // 安装工程依赖
-npm i
+npm run bootstrap
 
 // 启动测试项目
-cd /packages/playground
+npm run playground:dev
 
-npm i
-
-npm run dev
-
+// 提交npm 未启用
+publish:package 
 ```
 
 ## about developer （开发者必看！！！）
@@ -38,4 +36,7 @@ npm run dev
 
 ### 组件开发
 
-1. 
+1. class 命名规范遵循一下规则
+vp- 前缀
+vp-danger 变量
+vp-crud-header_logo  具体位置样式
