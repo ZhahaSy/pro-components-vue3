@@ -72,7 +72,4 @@ const onReset = () => {
   border-radius: 4px;
   background: #fff;
 }
-.date-picker {
-  width: 100%;
-}
 </style>
