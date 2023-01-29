@@ -1,3 +1,5 @@
+import { TableColumnProps } from 'ant-design-vue';
+
 export enum FilterType {
   SELECT = 'select',
   NUMBER = 'number',
@@ -9,3 +11,5 @@ export interface Filter {
   valueKey: string;
   type: FilterType;
 }
+
+export type ColumnProp = TableColumnProps & { suppressible: boolean };

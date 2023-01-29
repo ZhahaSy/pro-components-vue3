@@ -1,6 +1,6 @@
 import { computed, ref, unref, reactive, watch, defineComponent, PropType, ExtractPropTypes } from 'vue';
 
-import type { TableColumnProps, TableProps } from 'ant-design-vue';
+import type { TableProps } from 'ant-design-vue';
 import {
   Table as ATable,
   Popover as APopover,
@@ -9,16 +9,17 @@ import {
   Button as AButton,
 } from 'ant-design-vue';
 import type { PaginationProps } from 'ant-design-vue/lib/pagination';
+import { CheckboxValueType } from 'ant-design-vue/lib/checkbox/interface';
+import { ColumnProp } from '../type';
 
 import 'ant-design-vue/lib/table/style/index';
 import 'ant-design-vue/lib/popover/style/index';
 import './index.less';
 
-type columnProp = TableColumnProps & { suppressible: boolean };
 export const listProps = () => ({
   tableData: Array as PropType<Record<string, unknown>[]>,
   columns: {
-    type: Array as PropType<columnProp[]>,
+    type: Array as PropType<ColumnProp[]>,
     default: [],
   },
   pagination: Object as PropType<

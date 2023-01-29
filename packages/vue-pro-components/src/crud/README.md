@@ -121,9 +121,6 @@ const getData = async (params: any) => {
 | isOptionalTableColumn    | 是否可以选择 列的显隐 | boolean | false    |
 
 
-
-
-
 ### TableColumnProps
 详见<a href="https://www.antdv.com/components/table-cn#Column" title="TableColumnProps">antd-vue</a>
 

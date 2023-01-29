@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { FormProps, TableColumnProps, TableProps } from 'ant-design-vue';
+import { FormProps, TableProps } from 'ant-design-vue';
 import { reactive, onMounted, computed } from 'vue';
 import AdvanceForm from './AdvanceForm/index';
 import List from './List/index';
+
+import { ColumnProp } from './type';
 
 interface Props {
   /**
    * 列信息
    */
-  columns: TableColumnProps[];
+  columns: ColumnProp[];
   /**
    * table 是否可以多选
    */
@@ -16,7 +18,9 @@ interface Props {
   /**
    * table 请求
    */
-  request: (params: Record<string, unknown>) => Promise<Record<string, unknown>[]>;
+  request: (params: Record<string, unknown>) => Promise<{
+    tableData: Record<string, unknown>[];
+  }>;
   /**
    * 筛选表单数据
    */
@@ -101,8 +105,8 @@ defineExpose({
     :is-show-pagination="isShowPagination"
     :is-optional-table-column="isOptionalTableColumn"
   >
-    <template #header="header">
-      <slot name="tableHeader" v-bind="header"></slot>
+    <template #heade>
+      <slot v-if="$slots.tableHeader" name="tableHeader"></slot>
     </template>
     <template #extra>
       <slot name="extra" v-bind="state"></slot>
