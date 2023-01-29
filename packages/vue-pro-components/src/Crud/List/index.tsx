@@ -77,7 +77,7 @@ export default defineComponent({
     const checkoutState = reactive({
       indeterminate: false,
       checkAll: true,
-      checkedList: props.columns.map((v) => v.key),
+      checkedList: props.columns.map((v) => v.key) as CheckboxValueType[],
     });
 
     // 全选按钮点击
@@ -99,17 +99,16 @@ export default defineComponent({
     );
 
     const checkColumns = computed(() => {
-      const temp = props.columns.filter((v) => checkoutState.checkedList.includes(v.key));
+      const temp = props.columns.filter((v) => checkoutState.checkedList.includes(v.key as CheckboxValueType));
       return temp;
     });
 
     return () => {
       return (
         <div class="table-wrapper">
-          {props.isOptionalTableColumn}
           {slots.header || props.isOptionalTableColumn ? (
             <div class="btn-group">
-              {/* {slots.header && slots.header?.()} */}
+              {slots.header && { header: () => slots.header?.() }}
               {props.isOptionalTableColumn && (
                 <span class="btn-extra">
                   {slots['popover-btn']}
