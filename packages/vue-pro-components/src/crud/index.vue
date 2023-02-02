@@ -105,7 +105,7 @@ defineExpose({
     :is-show-pagination="isShowPagination"
     :is-optional-table-column="isOptionalTableColumn"
   >
-    <template #heade>
+    <template #header>
       <slot v-if="$slots.tableHeader" name="tableHeader"></slot>
     </template>
     <template #extra>
