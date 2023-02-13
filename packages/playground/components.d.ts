@@ -25,6 +25,8 @@ declare module '@vue/runtime-core' {
     ASelectOption: typeof import('ant-design-vue/es')['SelectOption']
     ATable: typeof import('ant-design-vue/es')['Table']
     ATableColumn: typeof import('ant-design-vue/es')['TableColumn']
+    ATabPane: typeof import('ant-design-vue/es')['TabPane']
+    ATabs: typeof import('ant-design-vue/es')['Tabs']
     ATag: typeof import('ant-design-vue/es')['Tag']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     Home: typeof import('./src/views/home/index.vue')['default']
@@ -32,6 +34,7 @@ declare module '@vue/runtime-core' {
     TestCrud: typeof import('./src/views/test-crud/index.vue')['default']
     TestEditableList: typeof import('./src/views/test-editableTable/test-editableList.vue')['default']
     TestEditableTable: typeof import('./src/views/test-editableTable/index.vue')['default']
+    TestForm: typeof import('./src/views/test-form.vue')['default']
     Views: typeof import('./src/views/index.vue')['default']
   }
 }

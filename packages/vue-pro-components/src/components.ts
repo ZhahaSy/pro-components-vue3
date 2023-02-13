@@ -3,3 +3,4 @@ export { ActionDialog } from './Action';
 export { Modal } from './Modal';
 export { PrefixTitle } from './Prefix';
 export { EditableList } from './EdiatableList';
+export { Form as vpForm } from './Form';

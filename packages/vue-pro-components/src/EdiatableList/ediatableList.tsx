@@ -39,7 +39,7 @@ export default defineComponent({
             extra: () => slots.extra?.(),
             tableBodyCell: (cellData) => {
               if (cellData.column.editable && props.editingKeys?.includes(cellData.record.key)) {
-                return <div>editing</div>;
+                return <VpEditCell>editing</VpEditCell>;
               }
 
               if (cellData.column.customRender) {
