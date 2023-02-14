@@ -14,32 +14,4 @@ import home from './views/home/index.vue';
   </div>
 </template>
 
-<style lang="less" scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-
-.btn-test-ul {
-  text-align: left;
-
-  > li {
-    + li {
-      margin-top: 10px;
-    }
-
-    > span {
-      margin-right: 10px;
-    }
-  }
-}
-</style>
+<style lang="less" scoped></style>

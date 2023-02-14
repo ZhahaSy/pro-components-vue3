@@ -1,17 +1,19 @@
 <template>
-  <vpForm v-model="formState" :form-items="formItems" @on-finish="onFinish"></vpForm>
+  <div :class="Classes['form-wrap']">
+    <Form v-model="formState" :form-items="formItems" @finish="onFinish"></Form>
+  </div>
 </template>
 <script setup lang="ts">
 import { reactive } from 'vue';
-import { vpForm } from 'vue-pro-components';
+import { Form } from 'vue-pro-components';
 
-import { FormItem, FormItemType } from 'vue-pro-components/src/Form/proForm';
+import { FormItem, ProFormItemType } from 'vue-pro-components/src/Form/proFormItem';
 
 const formItems: FormItem[] = [
   {
     label: '名称', // !
     dataIndex: 'name', // !
-    type: FormItemType.TEXT, // !
+    type: ProFormItemType.TEXT, // !
     rules: [], // ?
     required: true, // def:false
     allowClear: true, // def:true
@@ -19,8 +21,8 @@ const formItems: FormItem[] = [
   },
   {
     label: '年龄', // !
-    dataIndex: 'name', // !
-    type: FormItemType.NUMBER, // !
+    dataIndex: 'age', // !
+    type: ProFormItemType.NUMBER, // !
     rules: [], // ?
     required: true, // def:false
     allowClear: true, // def:true
@@ -30,15 +32,25 @@ const formItems: FormItem[] = [
   {
     label: '年份',
     dataIndex: 'year',
-    type: FormItemType.DATEPICKER,
+    type: ProFormItemType.DATEPICKER,
     required: true,
     allowClear: true,
   },
 ];
 
-const formState = reactive({});
+const formState = reactive({
+  name: '',
+  age: null,
+  year: undefined,
+});
 
 function onFinish(e) {
   console.log(e);
 }
 </script>
+<style module="Classes">
+.form-wrap {
+  width: 100%;
+  height: 100%;
+}
+</style>

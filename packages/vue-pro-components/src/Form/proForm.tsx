@@ -1,37 +1,10 @@
-import { Rule } from 'ant-design-vue/lib/form';
 import { PropType, defineComponent } from 'vue';
-
-export enum FormItemType {
-  // input
-  TEXT = 'text',
-  // number
-  NUMBER = 'number',
-  // datePicker
-  DATEPICKER = 'datePicker',
-  // select
-  SELECT = 'select',
-  // checkbox
-  CHECKBOX = 'checkbox',
-  // radio
-  RADIO = 'radio',
-}
-
-export type FormItem = {
-  label: string;
-  dataIndex: string;
-  type: FormItemType;
-  rules?: Rule[];
-  required?: boolean;
-  allowClear?: boolean;
-  // TODO: 联合类型需要联动设置
-  maxLength?: number;
-  min?: number;
-  max?: number;
-};
+import { Form as AForm, Button as AButton } from 'ant-design-vue';
+import ProFormItem, { FormItem } from './proFormItem';
 
 export const editableListProps = () => {
   return {
-    value: {
+    modelValue: {
       type: Object,
       required: true,
     },
@@ -39,27 +12,28 @@ export const editableListProps = () => {
       type: Array as PropType<FormItem[]>,
       default: [],
     },
-    columns: {
-      type: Array,
-      required: true,
-    },
   };
 };
 export default defineComponent({
   name: 'ProForm',
   props: editableListProps(),
-  emits: ['onFinish', 'model:value'],
+  emits: ['finish', 'model:value'],
   setup(props, { emit }) {
-    return (
-      <aForm value={props.value} onFinish={(e) => emit('onFinish', e)} onChange={(e) => emit('model:value', e)}>
-        <div class="vpForm-footer">
-          {props.formItems.map((item) => (
-            <>{item}</>
-          ))}
-
-          <aButton type="submit">提交</aButton>
+    return () => {
+      return (
+        <div style="min-width: 100%">
+          <AForm model={props.modelValue} onFinish={(e) => emit('finish', e)}>
+            {props.formItems.map((item) => (
+              <ProFormItem model={(props.modelValue || {})[item.dataIndex]} {...item}></ProFormItem>
+            ))}
+            <div class="vpForm-footer">
+              <AButton type="primary" html-type="submit">
+                提交
+              </AButton>
+            </div>
+          </AForm>
         </div>
-      </aForm>
-    );
+      );
+    };
   },
 });
