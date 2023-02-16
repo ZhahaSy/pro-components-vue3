@@ -1,30 +1,63 @@
-import { PropType, defineComponent } from 'vue';
+import { PropType, defineComponent, reactive, watch } from 'vue';
 import { Form as AForm, Button as AButton } from 'ant-design-vue';
-import ProFormItem, { FormItem } from './proFormItem';
+import ProFormItem, { FormItem } from './proFormItem.vue';
 
 export const editableListProps = () => {
   return {
     modelValue: {
-      type: Object,
+      type: Object as PropType<Record<string, any>>,
       required: true,
     },
     formItems: {
       type: Array as PropType<FormItem[]>,
       default: [],
     },
+    layout: {
+      type: String as PropType<'inline' | 'horizontal' | 'vertical' | undefined>,
+      default: undefined,
+    },
   };
 };
 export default defineComponent({
   name: 'ProForm',
   props: editableListProps(),
-  emits: ['finish', 'model:value'],
+  emits: ['finish', 'update:modelValue'],
   setup(props, { emit }) {
+    const formState = reactive({});
+    watch(
+      () => props.modelValue,
+      () => {
+        Object.assign(formState, props.modelValue);
+      },
+      {
+        immediate: true,
+      },
+    );
+
+    const itemUpdate = (e, dataIndex) => {
+      formState[dataIndex] = e;
+      emit('update:modelValue', formState);
+    };
     return () => {
       return (
         <div style="min-width: 100%">
-          <AForm model={props.modelValue} onFinish={(e) => emit('finish', e)}>
+          <AForm
+            model={formState}
+            layout={props.layout}
+            onFinish={(e) => {
+              console.log(e, 'proform');
+
+              emit('finish', e);
+            }}
+          >
             {props.formItems.map((item) => (
-              <ProFormItem model={(props.modelValue || {})[item.dataIndex]} {...item}></ProFormItem>
+              <ProFormItem
+                value={formState[item.dataIndex]}
+                {...item}
+                onUpdate:value={(e) => {
+                  itemUpdate(e, item.dataIndex);
+                }}
+              ></ProFormItem>
             ))}
             <div class="vpForm-footer">
               <AButton type="primary" html-type="submit">

@@ -42,7 +42,7 @@ export default defineComponent({
     radio: Radio,
   },
   props: {
-    model: {
+    modelValue: {
       type: [String, Array, Number],
       required: true,
     },
@@ -54,11 +54,24 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    dataIndex: {
+      type: String,
+      required: true,
+    },
   },
-  setup: (props, { attrs }) => {
+  emits: ['update:modelValue'],
+  setup: (props, { attrs, emit }) => {
     const itemCom = ref(props.type);
     return () => {
-      return <AFormItem label={props.label}>{h(resolveComponent(itemCom.value), attrs)}</AFormItem>;
+      return (
+        <AFormItem label={props.label} name={props.dataIndex}>
+          {h(resolveComponent(itemCom.value), {
+            ...attrs,
+            value: props.modelValue,
+            onUpdate: (e) => emit('update:modelValue', e),
+          })}
+        </AFormItem>
+      );
     };
   },
 });

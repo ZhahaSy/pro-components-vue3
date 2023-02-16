@@ -1,6 +1,6 @@
 <template>
   <div :class="Classes['form-wrap']">
-    <Form v-model="formState" :form-items="formItems" @finish="onFinish"></Form>
+    <Form v-model="formState" layout="inline" :form-items="formItems" @finish="onFinish"></Form>
   </div>
 </template>
 <script setup lang="ts">
@@ -40,7 +40,7 @@ const formItems: FormItem[] = [
 
 const formState = reactive({
   name: '',
-  age: null,
+  age: undefined,
   year: undefined,
 });
 
