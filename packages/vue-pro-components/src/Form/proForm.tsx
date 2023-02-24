@@ -1,6 +1,7 @@
 import { PropType, defineComponent, reactive, watch } from 'vue';
 import { Form as AForm, Button as AButton } from 'ant-design-vue';
-import ProFormItem, { FormItem } from './proFormItem.vue';
+import ProFormItem from './proFormItem.vue';
+import type { FormItem } from './proFormItem';
 
 export const editableListProps = () => {
   return {
@@ -45,8 +46,6 @@ export default defineComponent({
             model={formState}
             layout={props.layout}
             onFinish={(e) => {
-              console.log(e, 'proform');
-
               emit('finish', e);
             }}
           >

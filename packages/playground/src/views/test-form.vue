@@ -7,14 +7,16 @@
 import { reactive } from 'vue';
 import { Form } from 'vue-pro-components';
 
-import { FormItem, ProFormItemType } from 'vue-pro-components/src/Form/proFormItem';
+import { FormItem, ProFormItemType } from 'vue-pro-components/src/Form/type';
 
 const formItems: FormItem[] = [
   {
     label: '名称', // !
     dataIndex: 'name', // !
     type: ProFormItemType.TEXT, // !
-    rules: [], // ?
+    validation: {
+      isEmail: true,
+    }, // ?
     required: true, // def:false
     allowClear: true, // def:true
     maxLength: 100, // ?
@@ -23,7 +25,6 @@ const formItems: FormItem[] = [
     label: '年龄', // !
     dataIndex: 'age', // !
     type: ProFormItemType.NUMBER, // !
-    rules: [], // ?
     required: true, // def:false
     allowClear: true, // def:true
     min: 0, // ?
@@ -45,7 +46,7 @@ const formState = reactive({
 });
 
 function onFinish(e) {
-  console.log(e);
+  console.log('onFinish', e);
 }
 </script>
 <style module="Classes">

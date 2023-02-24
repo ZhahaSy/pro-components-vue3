@@ -41,6 +41,7 @@
   "dependencies": {
     "@vue-pro-components/utils": "^0.0.0",
     "ant-design-vue": "^3.2.15",
+    "async-validator": "^4.2.5",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {

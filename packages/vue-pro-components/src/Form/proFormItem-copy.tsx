@@ -22,7 +22,7 @@ export type FormItem = {
   label: string;
   dataIndex: string;
   type: ProFormItemType;
-  rules?: Rule[];
+  validation?: Validation;
   required?: boolean;
   allowClear?: boolean;
   // TODO: 联合类型需要联动设置
