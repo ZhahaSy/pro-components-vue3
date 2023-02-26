@@ -27,8 +27,8 @@ const formItems: FormItem[] = [
     type: ProFormItemType.NUMBER, // !
     required: true, // def:false
     allowClear: true, // def:true
-    min: 0, // ?
-    max: 0, // ?
+    min: -10, // ?
+    max: 100, // ?
   },
   {
     label: '年份',
@@ -37,12 +37,24 @@ const formItems: FormItem[] = [
     required: true,
     allowClear: true,
   },
+  {
+    label: '爱好',
+    dataIndex: 'hobby',
+    type: ProFormItemType.CHECKBOX,
+    required: true,
+    allowClear: true,
+    options: [
+      { label: '游泳', value: 'swim' },
+      { label: '蓝求', value: 'basketball' },
+    ],
+  },
 ];
 
 const formState = reactive({
   name: '',
   age: undefined,
   year: undefined,
+  hobby: [],
 });
 
 function onFinish(e) {

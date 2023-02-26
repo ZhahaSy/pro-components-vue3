@@ -1,12 +1,12 @@
-import { PropType, defineComponent, reactive, watch } from 'vue';
+import { PropType, defineComponent, ref, watch } from 'vue';
 import { Form as AForm, Button as AButton } from 'ant-design-vue';
 import ProFormItem from './proFormItem.vue';
-import type { FormItem } from './proFormItem';
+import type { FormItem } from './type';
 
 export const editableListProps = () => {
   return {
     modelValue: {
-      type: Object as PropType<Record<string, any>>,
+      type: Object as PropType<Record<string, unknown>>,
       required: true,
     },
     formItems: {
@@ -24,26 +24,28 @@ export default defineComponent({
   props: editableListProps(),
   emits: ['finish', 'update:modelValue'],
   setup(props, { emit }) {
-    const formState = reactive({});
+    const formState = ref({});
     watch(
       () => props.modelValue,
-      () => {
-        Object.assign(formState, props.modelValue);
+      (value) => {
+        formState.value = value || {};
       },
       {
         immediate: true,
+        deep: true,
       },
     );
 
     const itemUpdate = (e, dataIndex) => {
-      formState[dataIndex] = e;
+      formState.value[dataIndex] = e;
+
       emit('update:modelValue', formState);
     };
     return () => {
       return (
         <div style="min-width: 100%">
           <AForm
-            model={formState}
+            model={formState.value}
             layout={props.layout}
             onFinish={(e) => {
               emit('finish', e);
@@ -51,7 +53,7 @@ export default defineComponent({
           >
             {props.formItems.map((item) => (
               <ProFormItem
-                value={formState[item.dataIndex]}
+                value={formState.value[item.dataIndex]}
                 {...item}
                 onUpdate:value={(e) => {
                   itemUpdate(e, item.dataIndex);

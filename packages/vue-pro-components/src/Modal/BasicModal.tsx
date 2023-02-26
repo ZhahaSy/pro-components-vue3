@@ -16,7 +16,8 @@ interface Props {
 export type ModalProps = Partial<Props>;
 
 export default defineComponent({
-  setup(props: ModalProps, { slots, attrs }) {
+  emits: ['update:visible'],
+  setup(props: ModalProps, { slots, attrs, emit }) {
     const computedWidth = computed(() => {
       const type = typeof props.width;
       if (type === 'number') {
@@ -25,10 +26,8 @@ export default defineComponent({
       return props.width;
     });
 
-    const handleOk = (e: MouseEvent) => {
-      console.log(e);
-      // eslint-disable-next-line vue/no-mutating-props
-      props.visible = false;
+    const handleOk = () => {
+      emit('update:visible', false);
     };
 
     return () => (
