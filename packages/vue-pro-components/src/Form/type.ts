@@ -53,5 +53,4 @@ export type CheckBoxItem = DefaultFormItem & {
 
 export type FormItem = InputItem | NumberItem | DatePickerItem | CheckBoxItem;
 
-// 表单布局 @TODO 张双意 待确认
-export type VPFormLayout = FormLayout | 'multiseriate';
+export type VPFormLayout = FormLayout | 'grid';

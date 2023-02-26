@@ -64,11 +64,12 @@ const computedRules: ComputedRef<RuleObject[]> = computed(() => {
 </script>
 
 <template>
-  <AFormItem :key="dataIndex" :label="label" :name="dataIndex" :rules="computedRules">
+  <AFormItem :key="dataIndex" class="vpFormItem" :label="label" :name="dataIndex" :rules="computedRules">
     <component
       :is="comTmpl"
       v-bind="$attrs"
       :value="value"
+      class="vpFormItem-input"
       @update:value="
         (e) => {
           handleUpdate(e);
@@ -77,3 +78,14 @@ const computedRules: ComputedRef<RuleObject[]> = computed(() => {
     ></component>
   </AFormItem>
 </template>
+
+<style lang="less">
+.vpFormItem {
+  margin-right: 20px;
+  min-height: 50px;
+
+  .vpFormItem-input {
+    width: 100%;
+  }
+}
+</style>
