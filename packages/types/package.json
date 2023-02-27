@@ -5,19 +5,19 @@
   "keywords": [
     "types"
   ],
-  "author": "Tusi <cumtrobin@163.com>",
-  "homepage": "https://github.com/cumt-robin/vue-pro-components#readme",
+  "author": "ZhahaSy <zhaha_1122@163.com>",
+  "homepage": "https://github.com/ZhahaSy/pro-components-vue3",
   "license": "MIT",
   "main": "index.ts",
   "publishConfig": {
-    "registry": "https://registry.npmmirror.com"
+    "registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cumt-robin/vue-pro-components.git"
+    "url": "git+https://github.com/ZhahaSy/pro-components-vue3.git"
   },
   "bugs": {
-    "url": "https://github.com/cumt-robin/vue-pro-components/issues"
+    "url": "https://github.com/ZhahaSy/pro-components-vue3/issues"
   },
-  "gitHead": "3d9bfe8696310176b4ff75b826fff63a52469ef4"
+  "gitHead": "288a0db2ff4ecd9b4baadb1fff994aad18b49457"
 }

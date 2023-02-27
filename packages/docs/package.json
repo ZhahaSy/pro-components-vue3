@@ -1,5 +1,5 @@
 {
-  "name": "docs",
+  "name": "@vue-pro-components/docs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,5 +13,5 @@
   "dependencies": {
     "vitepress": "^1.0.0-alpha.33"
   },
-  "gitHead": "3d9bfe8696310176b4ff75b826fff63a52469ef4"
+  "gitHead": "288a0db2ff4ecd9b4baadb1fff994aad18b49457"
 }

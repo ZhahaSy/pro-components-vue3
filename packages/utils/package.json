@@ -6,7 +6,7 @@
     "utils"
   ],
   "author": "Tusi <cumtrobin@163.com>",
-  "homepage": "https://github.com/cumt-robin/vue-pro-components#readme",
+  "homepage": "https://github.com/ZhahaSy/pro-components-vue3",
   "license": "MIT",
   "main": "index.ts",
   "files": [
@@ -17,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cumt-robin/vue-pro-components.git"
+    "url": "git+https://github.com/ZhahaSy/pro-components-vue3.git"
   },
   "scripts": {
     "test": "node ./__tests__/@vue-pro-components/utils.test.js"
   },
   "bugs": {
-    "url": "https://github.com/cumt-robin/vue-pro-components/issues"
+    "url": "https://github.com/ZhahaSy/pro-components-vue3/issues"
   }
 }
