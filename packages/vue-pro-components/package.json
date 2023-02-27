@@ -1,5 +1,5 @@
 {
-  "name": "vue-pro-components",
+  "name": "pro-components-vue",
   "version": "0.0.2",
   "description": "pro components based on vue3",
   "keywords": [
@@ -11,8 +11,8 @@
     "unplugin",
     "ondemand"
   ],
-  "author": "Tusi <cumtrobin@163.com>",
-  "homepage": "https://github.com/cumt-robin/vue-pro-components#readme",
+  "author": "ZhahaSy <zhaha_1122@163.com>",
+  "homepage": "https://github.com/ZhahaSy/pro-components-vue3",
   "license": "MIT",
   "main": "index.ts",
   "types": "index.ts",
@@ -27,13 +27,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cumt-robin/vue-pro-components.git"
+    "url": "git+https://github.com/ZhahaSy/pro-components-vue3.git"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
-    "url": "https://github.com/cumt-robin/vue-pro-components/issues"
+    "url": "https://github.com/ZhahaSy/pro-components-vue3/issues"
   },
   "peerDependencies": {
     "vue": "^3.2.0"
