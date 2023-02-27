@@ -11,7 +11,7 @@
 import { defineComponent, ref } from 'vue';
 import testCrud from '../test-crud/index.vue';
 import testEditableList from '../test-editableTable/index.vue';
-import testForm from '../test-form.vue';
+import testForm from '../test-form/index.vue';
 
 export default defineComponent({
   setup() {

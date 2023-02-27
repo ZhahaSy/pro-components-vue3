@@ -9,6 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AAlert: typeof import('ant-design-vue/es')['Alert']
     AButton: typeof import('ant-design-vue/es')['Button']
+    ACard: typeof import('ant-design-vue/es')['Card']
     ACheckbox: typeof import('ant-design-vue/es')['Checkbox']
     ACheckboxGroup: typeof import('ant-design-vue/es')['CheckboxGroup']
     ACol: typeof import('ant-design-vue/es')['Col']
@@ -28,13 +29,15 @@ declare module '@vue/runtime-core' {
     ATabPane: typeof import('ant-design-vue/es')['TabPane']
     ATabs: typeof import('ant-design-vue/es')['Tabs']
     ATag: typeof import('ant-design-vue/es')['Tag']
+    DefaultForm: typeof import('./src/views/test-form/default-form.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     Home: typeof import('./src/views/home/index.vue')['default']
+    ListForm: typeof import('./src/views/test-form/list-form.vue')['default']
     PlusOutlined: typeof import('@ant-design/icons-vue')['PlusOutlined']
     TestCrud: typeof import('./src/views/test-crud/index.vue')['default']
     TestEditableList: typeof import('./src/views/test-editableTable/test-editableList.vue')['default']
     TestEditableTable: typeof import('./src/views/test-editableTable/index.vue')['default']
-    TestForm: typeof import('./src/views/test-form.vue')['default']
+    TestForm: typeof import('./src/views/test-form/index.vue')['default']
     Views: typeof import('./src/views/index.vue')['default']
   }
 }

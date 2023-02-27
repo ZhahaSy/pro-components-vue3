@@ -29,7 +29,7 @@ export default defineComponent({
   name: 'ProForm',
   props: editableListProps(),
   emits: ['finish', 'update:modelValue'],
-  setup(props, { emit }) {
+  setup(props, { emit, slots }) {
     const formState = ref({});
     watch(
       () => props.modelValue,
@@ -78,6 +78,7 @@ export default defineComponent({
                   ></ProFormItem>
                 </ACol>
               ))}
+              {slots?.default?.()}
             </ARow>
             <ARow>
               <div class="vpForm-footer">
