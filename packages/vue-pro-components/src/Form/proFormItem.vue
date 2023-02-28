@@ -3,14 +3,15 @@ import { FormItem as AFormItem, Input, InputNumber, DatePicker, Select, Checkbox
 import { ComputedRef, computed } from 'vue';
 import { isEmpty } from '@vue-pro-components/utils';
 import { RuleObject } from 'ant-design-vue/lib/form';
+import { DataIndex } from 'ant-design-vue/lib/vc-table/interface';
 import validationMap from './validator';
 import { Validation, VPFormLayout } from './type';
 
-interface Props {
+export interface Props {
   value: unknown;
   type: string;
   label: string;
-  dataIndex: string;
+  dataIndex: DataIndex;
   required?: boolean;
   validation?: Validation;
   formLayout?: VPFormLayout;
@@ -37,9 +38,8 @@ const computedRules: ComputedRef<RuleObject[]> = computed(() => {
   return [
     {
       required: props.required,
-      validator: (rule, value) => {
-        console.log(value, isEmpty(value));
-        if (props.required && isEmpty(value)) {
+      validator: () => {
+        if (props.required && isEmpty(props.value)) {
           return Promise.reject(new Error(`${props.label}不能为空`));
         }
         const keys = Object.keys(props.validation || {});
@@ -47,7 +47,7 @@ const computedRules: ComputedRef<RuleObject[]> = computed(() => {
         // eslint-disable-next-line no-plusplus
         for (let i = 0; i < keys.length; i++) {
           const validation = validationMap[keys[i]];
-          if (!validation.validator(value)) {
+          if (!validation.validator(props.value)) {
             result = props.label + validation.message;
             break;
           }
