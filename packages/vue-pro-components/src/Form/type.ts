@@ -1,3 +1,4 @@
+import { ColProps } from 'ant-design-vue';
 import { OptionProps } from 'ant-design-vue/es/select';
 import { PickerMode } from 'ant-design-vue/es/vc-picker/interface';
 import { FormLayout } from 'ant-design-vue/lib/form/Form';
@@ -15,6 +16,8 @@ export enum ProFormItemType {
   CHECKBOX = 'checkbox',
   // radio
   RADIO = 'radio',
+  // formList
+  LIST = 'list',
 }
 
 export interface Validation {
@@ -35,6 +38,8 @@ type DefaultFormItem = {
   required?: boolean;
   allowClear?: boolean;
   type: string;
+  span?: number;
+  labelCol?: ColProps;
 };
 export type InputItem = DefaultFormItem & {
   maxLength?: number;
@@ -51,6 +56,10 @@ export type CheckBoxItem = DefaultFormItem & {
   options: OptionProps;
 };
 
-export type FormItem = InputItem | NumberItem | DatePickerItem | CheckBoxItem;
+export type ProFormItem = InputItem | NumberItem | DatePickerItem | CheckBoxItem;
+export type FormListItem = DefaultFormItem & {
+  formListConfig: ProFormItem[];
+};
+export type FormItem = ProFormItem | FormListItem;
 
 export type VPFormLayout = FormLayout | 'grid';

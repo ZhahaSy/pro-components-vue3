@@ -86,6 +86,44 @@ const formItems: FormItem[] = [
       { label: '蓝求', value: 'basketball' },
     ],
   },
+  {
+    label: '代办',
+    dataIndex: 'todos',
+    type: ProFormItemType.LIST,
+    required: true,
+    span: 24,
+    labelCol: { span: 24 },
+    formListConfig: [
+      {
+        label: '名称', // !
+        dataIndex: 'name', // !
+        type: ProFormItemType.TEXT, // !
+        validation: {
+          isString: true,
+        }, // ?
+        required: true, // def:false
+        allowClear: true, // def:true
+        maxLength: 100, // ?
+      },
+      {
+        label: '类型', // !
+        dataIndex: 'type', // !
+        type: ProFormItemType.SELECT, // !
+        required: true, // def:false
+        allowClear: true, // def:true
+        options: [
+          {
+            label: '类型1',
+            value: 'type1',
+          },
+          {
+            label: '类型2',
+            value: 'type2',
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 const formState = reactive({
@@ -93,6 +131,12 @@ const formState = reactive({
   age: undefined,
   year: undefined,
   hobby: [],
+  todos: [
+    {
+      name: '1',
+      type: 0,
+    },
+  ],
 });
 
 function onFinish(e) {

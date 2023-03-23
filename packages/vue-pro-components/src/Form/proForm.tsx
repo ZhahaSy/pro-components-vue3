@@ -1,5 +1,5 @@
 import { PropType, computed, defineComponent, ref, watch } from 'vue';
-import { Form as AForm, Button as AButton, Row as ARow, Col as ACol } from 'ant-design-vue';
+import { Form as AForm, Button as AButton, Row as ARow, Col as ACol, ColProps } from 'ant-design-vue';
 import { FormLayout } from 'ant-design-vue/es/form/Form';
 import ProFormItem from './proFormItem.vue';
 import type { FormItem } from './type';
@@ -23,6 +23,7 @@ export const editableListProps = () => {
       type: Number,
       default: 1,
     },
+    labelCol: Object as PropType<ColProps>,
   };
 };
 export default defineComponent({
@@ -62,13 +63,14 @@ export default defineComponent({
           <AForm
             model={formState.value}
             layout={props.layout as FormLayout}
+            labelCol={props.labelCol}
             onFinish={(e) => {
               emit('finish', e);
             }}
           >
             <ARow wrap={true}>
               {props.formItems.map((item) => (
-                <ACol span={gridLayout.value}>
+                <ACol span={item.span || gridLayout.value}>
                   <ProFormItem
                     value={formState.value[item.dataIndex]}
                     {...item}

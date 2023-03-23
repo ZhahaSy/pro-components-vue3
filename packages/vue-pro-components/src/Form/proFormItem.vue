@@ -1,9 +1,19 @@
 <script setup lang="ts">
-import { FormItem as AFormItem, Input, InputNumber, DatePicker, Select, CheckboxGroup, Radio } from 'ant-design-vue';
+import {
+  FormItem as AFormItem,
+  Input,
+  InputNumber,
+  DatePicker,
+  Select,
+  CheckboxGroup,
+  Radio,
+  ColProps,
+} from 'ant-design-vue';
 import { ComputedRef, computed } from 'vue';
 import { isEmpty } from '@vue-pro-components/utils';
 import { RuleObject } from 'ant-design-vue/lib/form';
 import { DataIndex } from 'ant-design-vue/lib/vc-table/interface';
+import FormList from '../FormList/FormList.vue';
 import validationMap from './validator';
 import { Validation, VPFormLayout } from './type';
 
@@ -15,6 +25,7 @@ export interface Props {
   required?: boolean;
   validation?: Validation;
   formLayout?: VPFormLayout;
+  labelCol: ColProps;
 }
 const ProFormItemComMap = {
   text: Input,
@@ -23,6 +34,7 @@ const ProFormItemComMap = {
   select: Select,
   checkbox: CheckboxGroup,
   radio: Radio,
+  list: FormList,
 };
 
 const props = withDefaults(defineProps<Props>(), { validation: undefined, required: false, formLayout: undefined });
@@ -64,7 +76,14 @@ const computedRules: ComputedRef<RuleObject[]> = computed(() => {
 </script>
 
 <template>
-  <AFormItem :key="dataIndex" class="vpFormItem" :label="label" :name="dataIndex" :rules="computedRules">
+  <AFormItem
+    :key="dataIndex"
+    class="vpFormItem"
+    :label="label"
+    :name="dataIndex"
+    :label-col="labelCol"
+    :rules="computedRules"
+  >
     <component
       :is="comTmpl"
       v-bind="$attrs"
