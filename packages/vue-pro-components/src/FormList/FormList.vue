@@ -1,7 +1,7 @@
 <template>
   <div class="vpFormListWrap">
     <a-row v-for="(state, index) in formState || []" :key="state.__id" :wrap="true">
-      <a-col v-for="item in formListConfig || []" :key="item.dataIndex + index" :span="span">
+      <a-col v-for="item in formListConfig || []" :key="item.dataIndex + index" flex="1" :span="span">
         <proFormItem
           v-model:value="formState![index][item.dataIndex]"
           v-bind="item"
@@ -9,7 +9,9 @@
         >
         </proFormItem>
       </a-col>
-      <div></div>
+      <a-col v-if="deletable">
+        <a-button v-if="index + 1 > min" danger type="text" @click="handleDelete(index)">delete</a-button>
+      </a-col>
     </a-row>
 
     <a-row v-if="addible" style="margin-right: 20px" :wrap="true">
@@ -36,12 +38,14 @@ interface Props {
   deletable?: boolean;
   formListConfig?: FormItem[];
   span?: number;
+  min?: number;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   addible: true,
   formListConfig: undefined,
   span: 24,
+  min: 1,
 });
 
 const emit = defineEmits(['update:modelValue']);
@@ -70,6 +74,11 @@ watch(
 );
 
 const span = computed(() => 24 / (props.formListConfig?.length || 1));
+
+const handleDelete = (index) => {
+  formState.value?.splice(index, 1);
+  emit('update:modelValue', formState.value);
+};
 </script>
 
 <style lang="less">
