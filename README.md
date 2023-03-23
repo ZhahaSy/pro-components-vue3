@@ -18,10 +18,10 @@
 ## 快速启动
 ```
 // 安装工程依赖
-npm run bootstrap
+yarn run bootstrap
 
 // 启动测试项目
-npm run playground:dev
+yarn run playground:dev
 
 // 提交npm 未启用
 publish:package 
