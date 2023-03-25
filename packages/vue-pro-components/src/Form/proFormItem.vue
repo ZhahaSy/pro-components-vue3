@@ -26,7 +26,7 @@ export interface Props {
   validation?: Validation;
   formLayout?: VPFormLayout;
   labelCol: ColProps;
-}
+∏}
 const ProFormItemComMap = {
   text: Input,
   number: InputNumber,

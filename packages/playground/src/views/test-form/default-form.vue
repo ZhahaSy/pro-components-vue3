@@ -20,6 +20,7 @@ const formItems: FormItem[] = [
     required: true, // def:false
     allowClear: true, // def:true
     maxLength: 100, // ?
+    showOn: (formState) => !!formState.age,
   },
   {
     label: '年龄', // !

@@ -69,17 +69,20 @@ export default defineComponent({
             }}
           >
             <ARow wrap={true}>
-              {props.formItems.map((item) => (
-                <ACol span={item.span || gridLayout.value}>
-                  <ProFormItem
-                    value={formState.value[item.dataIndex]}
-                    {...item}
-                    onUpdate:value={(e) => {
-                      itemUpdate(e, item.dataIndex);
-                    }}
-                  ></ProFormItem>
-                </ACol>
-              ))}
+              {props.formItems.map(
+                (item) =>
+                  (item.showOn ? !item.showOn(formState) : true) && (
+                    <ACol span={item.span || gridLayout.value}>
+                      <ProFormItem
+                        value={formState.value[item.dataIndex]}
+                        {...item}
+                        onUpdate:value={(e) => {
+                          itemUpdate(e, item.dataIndex);
+                        }}
+                      ></ProFormItem>
+                    </ACol>
+                  ),
+              )}
               {slots?.default?.()}
             </ARow>
             <ARow>
