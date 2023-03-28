@@ -13,8 +13,6 @@ import {
 import { ComputedRef, computed } from 'vue';
 import { isEmpty } from '@vue-pro-components/utils';
 import { RuleObject } from 'ant-design-vue/lib/form';
-import { DataIndex } from 'ant-design-vue/lib/vc-table/interface';
-import isArray from 'lodash-es/isArray';
 import FormList from '../FormList/FormList.vue';
 import validationMap from './validator';
 import { ProFormItem, Validation, VPFormLayout } from './type';
@@ -23,7 +21,7 @@ export interface Props {
   value: unknown;
   type: string;
   label: string;
-  dataIndex: DataIndex;
+  dataIndex: string | (string | number)[];
   required?: boolean;
   validation?: Validation;
   formLayout?: VPFormLayout;
@@ -90,7 +88,7 @@ const computedRules: ComputedRef<RuleObject[]> = computed(() => {
     :key="dataIndex.toString()"
     class="vpFormItem"
     :label="label"
-    :name="isArray(dataIndex) ? dataIndex[dataIndex.length - 1] : dataIndex"
+    :name="dataIndex"
     :label-col="labelCol"
     :rules="computedRules"
     v-bind="formItemProps"

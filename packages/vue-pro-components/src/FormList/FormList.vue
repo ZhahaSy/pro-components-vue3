@@ -1,7 +1,7 @@
 <template>
   <div class="vpFormListWrap">
     <a-row v-for="(state, index) in formState || []" :key="state.__id" :wrap="true">
-      <a-col v-for="item in formListConfig || []" :key="item.dataIndex + index" flex="1" :span="span">
+      <a-col v-for="item in formListConfig || []" :key="item.dataIndex" flex="1" :span="span">
         <proFormItem
           v-model:value="formState![index][item.dataIndex]"
           v-bind="item"
@@ -10,7 +10,7 @@
         </proFormItem>
       </a-col>
       <a-col v-if="deletable">
-        <a-button v-if="index + 1 > min" danger type="text" @click="handleDelete(index)">delete</a-button>
+        <a-button v-if="index + 1 > min" danger type="text" @click="handleDelete(index, state)">delete</a-button>
       </a-col>
     </a-row>
 
@@ -39,6 +39,8 @@ interface Props {
   formListConfig?: FormItem[];
   span?: number;
   min?: number;
+  onDelete: (index, row) => void;
+  onCreate: () => void;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -53,9 +55,11 @@ const emit = defineEmits(['update:modelValue']);
 const formState: Ref<formValue> = ref();
 
 const handleAdd = () => {
-  console.log('add');
-
   if (props.addible) {
+    if (props.onCreate) {
+      props.onCreate();
+      return;
+    }
     formState.value?.push({
       __id: uniqueId(),
     });
@@ -75,7 +79,11 @@ watch(
 
 const span = computed(() => 24 / (props.formListConfig?.length || 1));
 
-const handleDelete = (index) => {
+const handleDelete = (index, row) => {
+  if (props.onDelete) {
+    props.onDelete(index, row);
+    return;
+  }
   formState.value?.splice(index, 1);
   emit('update:modelValue', formState.value);
 };

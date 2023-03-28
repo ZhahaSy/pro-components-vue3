@@ -34,7 +34,7 @@ export interface Validation {
 
 type DefaultFormItem = {
   label: string;
-  dataIndex: DataIndex;
+  dataIndex: string;
   validation?: Validation;
   required?: boolean;
   allowClear?: boolean;
@@ -59,6 +59,7 @@ export type CheckBoxItem = DefaultFormItem & {
 
 export type ProFormItem = InputItem | NumberItem | DatePickerItem | CheckBoxItem;
 export type FormListItem = DefaultFormItem & {
+  dataIndex: string;
   formListConfig: ProFormItem[];
 };
 export type FormItem = ProFormItem | FormListItem;
