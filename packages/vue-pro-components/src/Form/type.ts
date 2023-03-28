@@ -1,6 +1,7 @@
 import { ColProps } from 'ant-design-vue';
 import { OptionProps } from 'ant-design-vue/es/select';
 import { PickerMode } from 'ant-design-vue/es/vc-picker/interface';
+import { DataIndex } from 'ant-design-vue/es/vc-table/interface';
 import { FormLayout } from 'ant-design-vue/lib/form/Form';
 
 export enum ProFormItemType {
@@ -33,7 +34,7 @@ export interface Validation {
 
 type DefaultFormItem = {
   label: string;
-  dataIndex: string;
+  dataIndex: DataIndex;
   validation?: Validation;
   required?: boolean;
   allowClear?: boolean;

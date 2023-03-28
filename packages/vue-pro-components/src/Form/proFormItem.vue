@@ -8,14 +8,16 @@ import {
   CheckboxGroup,
   Radio,
   ColProps,
+  FormItemProps,
 } from 'ant-design-vue';
 import { ComputedRef, computed } from 'vue';
 import { isEmpty } from '@vue-pro-components/utils';
 import { RuleObject } from 'ant-design-vue/lib/form';
 import { DataIndex } from 'ant-design-vue/lib/vc-table/interface';
+import isArray from 'lodash-es/isArray';
 import FormList from '../FormList/FormList.vue';
 import validationMap from './validator';
-import { Validation, VPFormLayout } from './type';
+import { ProFormItem, Validation, VPFormLayout } from './type';
 
 export interface Props {
   value: unknown;
@@ -26,7 +28,9 @@ export interface Props {
   validation?: Validation;
   formLayout?: VPFormLayout;
   labelCol: ColProps;
-∏}
+  formItemProps?: FormItemProps;
+  fieldProps?: ProFormItem;
+}
 const ProFormItemComMap = {
   text: Input,
   number: InputNumber,
@@ -37,7 +41,13 @@ const ProFormItemComMap = {
   list: FormList,
 };
 
-const props = withDefaults(defineProps<Props>(), { validation: undefined, required: false, formLayout: undefined });
+const props = withDefaults(defineProps<Props>(), {
+  validation: undefined,
+  required: false,
+  formLayout: undefined,
+  formItemProps: undefined,
+  fieldProps: undefined,
+});
 
 const emit = defineEmits(['update:value']);
 
@@ -77,16 +87,17 @@ const computedRules: ComputedRef<RuleObject[]> = computed(() => {
 
 <template>
   <AFormItem
-    :key="dataIndex"
+    :key="dataIndex.toString()"
     class="vpFormItem"
     :label="label"
-    :name="dataIndex"
+    :name="isArray(dataIndex) ? dataIndex[dataIndex.length - 1] : dataIndex"
     :label-col="labelCol"
     :rules="computedRules"
+    v-bind="formItemProps"
   >
     <component
       :is="comTmpl"
-      v-bind="$attrs"
+      v-bind="fieldProps"
       :value="value"
       class="vpFormItem-input"
       @update:value="
